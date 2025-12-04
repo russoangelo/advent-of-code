@@ -17,16 +17,26 @@ def part1(sum: int) -> int:
                     sum+=i
     return sum
 
+def part2(sum: int) -> int:
+    for prod in ranges:
+        prod_id = prod.split('-')
+        start, end = int(prod_id[0]), int(prod_id[1])
 
-'''
-if i have 111111
-i can check every
-for example if i have 12341234
+        for i in range(start, end + 1):
+            string = ""
+            ris = 0
+            prod_id_str = str(i)
+            for k in range(1, len(prod_id_str)):
+                string = prod_id_str[:k]
+                if len(prod_id_str) % len(string) != 0:
+                    continue
+                ris = len(prod_id_str) // len(string)
+                if ris >= 2:
+                    verify = string * ris
+                    if prod_id_str == verify:
+                        sum+=int(verify)
+                        break
+    return sum
 
-i have a flag to check
-i take the 1, then 2 == 1 no, so 12 is equal to 34 no 123 is equal to 412 no, 1234 is equal 1234 yes, but the str is ended? if yes is invalid else continue
-
-i
-'''
-
+# print(part2(sum=0))
 # print(part1(sum = 0))
